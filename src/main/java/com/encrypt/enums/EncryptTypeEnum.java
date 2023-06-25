@@ -1,5 +1,5 @@
 package com.encrypt.enums;
 
 public enum EncryptTypeEnum {
-    DES,AES,RSA,SM2
+    DES,AES,SM2,CUSTOM
 }

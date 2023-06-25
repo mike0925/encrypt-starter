@@ -2,7 +2,6 @@
   "hints": [
     {
       "name":"encrypt.type",
-      "description": "加密方式.",
       "values": [
         {
           "value": "DES",
@@ -13,12 +12,12 @@
           "description": "AES对称加密方式(key支持16,24,32位, iv为16位)."
         },
         {
-          "value": "RSA",
-          "description": "RSA非对称加密方式(目前未实现)."
-        },
-        {
           "value": "SM2",
           "description": "SM2非对称加密方式."
+        },
+        {
+          "value": "CUSTOM",
+          "description": "自定义加密方式, 实现IEncryptOptions方法接口的加解密方法注册成为bean."
         }
       ]
     },
