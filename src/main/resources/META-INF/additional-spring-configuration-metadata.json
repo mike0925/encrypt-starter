@@ -1,0 +1,39 @@
+{
+  "hints": [
+    {
+      "name":"encrypt.type",
+      "description": "加密方式.",
+      "values": [
+        {
+          "value": "DES",
+          "description": "DES对称加密方式(key建议8位, iv建议8位)."
+        },
+        {
+          "value": "AES",
+          "description": "AES对称加密方式(key支持16,24,32位, iv为16位)."
+        },
+        {
+          "value": "RSA",
+          "description": "RSA非对称加密方式(目前未实现)."
+        },
+        {
+          "value": "SM2",
+          "description": "SM2非对称加密方式."
+        }
+      ]
+    },
+    {
+      "name": "encrypt.return-type",
+      "values": [
+        {
+          "value": "BASE64",
+          "description": "将加密字节数组进行base64处理返回."
+        },
+        {
+          "value": "HEX",
+          "description": "将加密字节数组进行hex处理返回."
+        }
+      ]
+    }
+  ]
+}
