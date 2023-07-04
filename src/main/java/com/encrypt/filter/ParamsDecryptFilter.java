@@ -3,6 +3,7 @@ package com.encrypt.filter;
 import com.encrypt.biz.IEncryptOptions;
 import com.encrypt.config.EncryptProperties;
 import com.encrypt.utils.SpringContextUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.*;
@@ -14,6 +15,7 @@ import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
+@Slf4j
 @WebFilter(urlPatterns = "/*", filterName = "encryptFilter")
 public class ParamsDecryptFilter implements Filter {
 
@@ -38,13 +40,19 @@ public class ParamsDecryptFilter implements Filter {
 
     private void writeResponse(HttpServletResponse response, String responseString)
             throws IOException {
-        response.reset();
-        response.setCharacterEncoding("UTF-8");
-        response.setContentType("text/plain;charset=utf-8");
-        response.setContentLength(responseString.getBytes(StandardCharsets.UTF_8).length);
-        PrintWriter out = response.getWriter();
-        out.print(responseString);
-        out.flush();
-        out.close();
+        PrintWriter out = null;
+        try {
+            response.setCharacterEncoding("UTF-8");
+            response.setContentType("text/plain;charset=utf-8");
+            out = response.getWriter();
+            out.write(responseString);
+        } catch (IOException e) {
+            log.error("客户段信息返回异常", e);
+        } finally {
+            if (null != out) {
+                out.flush();
+                out.close();
+            }
+        }
     }
 }
