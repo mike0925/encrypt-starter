@@ -83,6 +83,10 @@ public class ParamsDecryptRequestWrapper extends HttpServletRequestWrapper {
             if (inputStr == null || "".equals(inputStr)) {
                 return;
             }
+            //TODO 特殊处理 有部分会对data格式化处理,多一对引号,理论上避免不止一对,进行替换处理
+            if (inputStr.startsWith("\"") && inputStr.endsWith("\"")) {
+                inputStr = inputStr.replaceAll("\"", "");
+            }
             inputStr = encryptOptions.decrypt(inputStr);
             this.is = IOUtils.toInputStream(inputStr, StandardCharsets.UTF_8);
         } catch (Exception e) {
