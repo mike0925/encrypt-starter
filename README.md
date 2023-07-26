@@ -3,11 +3,11 @@
 ## 欢迎Issues提意见
 
 ```xml
-        <dependency>
-            <groupId>com.encrypt</groupId>
-            <artifactId>encrypt-starter</artifactId>
-            <version>1.0</version>
-        </dependency>
+<dependency>
+    <groupId>com.encrypt</groupId>
+    <artifactId>encrypt-starter</artifactId>
+    <version>1.0</version>
+</dependency>
 
 ```
 
